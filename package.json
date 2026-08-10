@@ -1,0 +1,10 @@
+{
+  "name": "family-motors-stock-app",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Family Motors Mahindra commercial 3-wheeler stock app",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "bcryptjs": "^3.0.2"
+  }
+}
