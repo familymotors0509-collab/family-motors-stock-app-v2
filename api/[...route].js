@@ -153,7 +153,7 @@ module.exports = async (req, res) => {
     }
     if (path === 'users' && method === 'POST') {
       if(me.role!=='admin') return json(res,403,{error:'Admin only'});
-      const name=String(body.name||'').trim(), password=String(body.password||''), role=body.role==='admin'?'admin':'staff';
+      const name=String(body.name||'').trim(), password=String(body.password||''), role=['admin','manager','field_sales'].includes(body.role)?body.role:'field_sales';
       if(!name||!password) return json(res,400,{error:'Name and password required'});
       const hash=await bcrypt.hash(password,10);
       try { const rows=await sql`INSERT INTO fm_users(name,password_hash,role) VALUES(${name},${hash},${role}) RETURNING id`; return json(res,200,{ok:true,id:rows[0].id}); }
